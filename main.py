@@ -1,5 +1,6 @@
 import discord
 import random
+import requests
 
 
 with open('token.txt') as tokenFile:
@@ -30,6 +31,17 @@ class MyClient(discord.Client):
         
         if "pog" in message.content.lower():
             await message.reply("poggers")
+        
+
+        if message.content == "how much of an epic gamer am i?":
+            r = requests.get("https://osu.ppy.sh/users/13764285")
+            offset = 13
+            scoreLen = 5
+            if r.status_code == 200:
+                globalLocation = r.text.find("global")
+                await message.reply("You are epic gamer #{}".format(r.text[globalLocation + offset:globalLocation + offset + scoreLen]))
+            else:
+                await message.reply("something isn't quite right, {} this should be 200 and not whatever it is now".format(r.status_code))
 
 
 client = MyClient()

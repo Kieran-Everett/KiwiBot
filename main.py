@@ -46,6 +46,13 @@ class MyClient(discord.Client):
                 await message.reply("You are epic gamer #{}".format(r.text[globalLocation + offset:globalLocation + offset + scoreLen]))
             else:
                 await message.reply("something isn't quite right, {} this should be 200 and not whatever it is now".format(r.status_code))
+        
+        if "i am" in message.content.lower():
+            await message.reply("Hi" + message.content[message.content.find("i am")+4:] + ", nice to meet you")
+        elif "i'm" in message.content.lower():
+            await message.reply("Hi" + message.content[message.content.find("i'm")+3:] + ", nice to meet you")
+        elif "im" in message.content.lower():
+            await message.reply("Hi" + message.content[message.content.find("im")+2:] + ", nice to meet you")
 
 
 client = MyClient()

@@ -8,7 +8,11 @@ with open('token.txt') as tokenFile:
 
 
 class MyClient(discord.Client):
-    async def on_ready(self):
+
+
+    async def on_ready(self): # Fancy async stuff using asyncio
+        # Essentially an __init__ method
+
         print("Logged in as")
         print(self.user.name)
         print(self.user.id)
@@ -21,7 +25,7 @@ class MyClient(discord.Client):
         
         # Alice is mean to the bot
         if message.content.startswith("was alice mean to you?") and message.author != "al.is.kinda.cute#2251":
-            await message.reply("yes she was :(")
+            await message.reply("yes she was :(") # Await lets you multitask without doing thread stuff
         elif message.content.startswith("was alice mean to you?") and message.author == "al.is.kinda.cute#2251":
             await message.reply("you know you were :(")
         

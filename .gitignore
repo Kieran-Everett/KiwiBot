@@ -134,3 +134,5 @@ dmypy.json
 
 # Discord Token
 token.txt
+*.m4a
+*.exe
